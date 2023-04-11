@@ -2,6 +2,9 @@ import express from 'express';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
 import connectDB from './config/db';
+import adminRouter from "./routes/adminRoutes.js";
+import categoryRouter from "./routes/categoryRoutes.js";
+import productRouter from "./routes/productRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -19,6 +22,10 @@ app.listen(PORT, () => {
 });
 
 app.use(express.json())
+app.use('/api/admin',adminRouter);
+app.use('/api/category',categoryRouter);
+app.use('api/products',productRouter);
+
 
 // Define routes
 app.get('/', (req, res) => {
