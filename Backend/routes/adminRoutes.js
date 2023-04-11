@@ -1,7 +1,7 @@
 import express from 'express';
 const router = express.Router();
 import adminController from '../controllers/adminController.js'
-//import authorization from '../middleware/auth.js'
+import authorization from '../middleware/auth.js'
 //route.get('/', authorization, adminController.getAllAdmins);
 router.get('/:id', authorization, adminController.getAdmin);
 router.put('/:id', authorization, adminController.editAdmin);

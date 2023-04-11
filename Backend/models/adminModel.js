@@ -1,24 +1,24 @@
 import mongoose from 'mongoose';
 
 const adminSchema = mongoose.Schema({
-  firstname: {
+  Firstname: {
     type: String,
     required: true
   },
-  lastName: {
+  LastName: {
     type: String,
     required: true,
   },
-  email: {
+  Email: {
     type: String,
     unique: true,
     required: true,
   },
-  password: {
+  Password: {
     type: String,
     required: true,
   },
-  token: {
+  Token: {
     type: String,
   }
 }, {
