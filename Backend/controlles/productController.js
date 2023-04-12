@@ -1,9 +1,9 @@
-import ProductsModel from "../models/productsModel.js";
+import productModel from "../models/productModel.js";
 
 //get all the products 
 
 export async function getAll (req,res,next){
-  ProductsModel.find({},(err,response) =>{
+  productModel.find({},(err,response) =>{
     if(err)return next (err);
     return res.status(200).send({success:true,response});
   });
@@ -12,7 +12,7 @@ export async function getAll (req,res,next){
 //get product byId
 export async function getById(req,res,next){
   let{id}=req.params;
-  ProductsModel.findOne({_id:id},(err,response)=>{
+  productModel.findOne({_id:id},(err,response)=>{
     if (err) return next (err);
     res.status(200).send({success:true,response})
   });
@@ -23,7 +23,7 @@ export async function getById(req,res,next){
 export async function post(req, res, next) {
   try {
     let body = req.body;
-    let newproduct = new ProductsModel(body);
+    let newproduct = new productModel(body);
     newproduct.save((error, response) => {
       if (error) return res.status(500).send(error);
       res
@@ -38,7 +38,7 @@ export async function post(req, res, next) {
 //update the product
 export async function put(req,res,next){
   try {
-        const product = await ProductsModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        const product = await productModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
         if (!product) {
           return res.status(404).send();
         }
@@ -51,11 +51,11 @@ export async function put(req,res,next){
 
 export async function Delete(req,res,next){
   try {
-        const product = await ProductsModel.findByIdAndDelete(req.params.id, req.body, { new: true });
+        const product = await productModel.findByIdAndDelete(req.params.id);
         if (!product) {
           return res.status(404).send();
         }
-        res.send(product);
+        res.send("not found");
       } catch (err) {
         res.status(400).send(err);
       }

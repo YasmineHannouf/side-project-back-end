@@ -1,14 +1,14 @@
 import express from 'express';
 const router = express.Router();
-import adminController from '../controllers/adminController.js'
+import { addAdmin, deleteAdmin, editAdmin, getAdmin, getAllAdmins, login, logout } from '../controlles/adminController.js'
 import authorization from '../middleware/auth.js'
-//route.get('/', authorization, adminController.getAllAdmins);
-router.get('/:id', authorization, adminController.getAdmin);
-router.put('/:id', authorization, adminController.editAdmin);
-router.delete('/:id', authorization, adminController.deleteAdmin);
-router.post('/addAdmin', authorization, adminController.addAdmin)
-router.post('/login', adminController.login)
-router.post('/logout', adminController.logout)
+router.get('/', authorization, getAllAdmins);
+router.get('/:id', authorization, getAdmin);
+router.put('/:id', authorization, editAdmin);
+router.delete('/:id', authorization, deleteAdmin);
+router.post('/addAdmin', authorization, addAdmin)
+router.post('/login', login)
+router.post('/logout', logout)
 
 export default router;
 

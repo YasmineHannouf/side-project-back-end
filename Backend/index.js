@@ -4,8 +4,8 @@ import morgan from 'morgan';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
-import connectDB from './config/db';
-import adminRouter from "./routes/adminRoutes.js";
+import connectDB from '../Backend/config/db.js';
+import adminRouter from "../Backend/routes/adminRoutes.js";
 import categoryRouter from "./routes/categoryRoutes.js";
 import productRouter from "./routes/productRoutes.js";
 
