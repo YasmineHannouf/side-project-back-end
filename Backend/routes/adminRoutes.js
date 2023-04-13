@@ -6,7 +6,7 @@ router.get('/', authorization, getAllAdmins);
 router.get('/:id', authorization, getAdmin);
 router.put('/:id', authorization, editAdmin);
 router.delete('/:id', authorization, deleteAdmin);
-router.post('/addAdmin', authorization, addAdmin)
+router.post('/', authorization, addAdmin)
 router.post('/login', login)
 router.post('/logout', logout)
 
