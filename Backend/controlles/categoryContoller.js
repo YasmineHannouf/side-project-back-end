@@ -27,10 +27,13 @@ export  async function getAllCategory(req, res, next) {
   //   if (err) return next(err);
   //   return res.status(200).send({ success: true, response });
   // });
+  try{
  const categories= await categoryModel.find({}).exec();
  if(categories){
    return res.status(200).send({ success: true, data: categories });
 
+ }}catch(err){
+  next(err);
  }
   
 }

@@ -32,7 +32,7 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/api/admin',adminRouter);
 app.use('/api/category',categoryRouter);
-app.use('api/products',productRouter);
+app.use('/api/products',productRouter);
 
 
 // Define routes

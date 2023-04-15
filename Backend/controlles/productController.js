@@ -1,5 +1,6 @@
 import productModel from "../models/productModel.js";
 
+
 //get all the products 
 
 export async function getAll (req,res,next){
@@ -20,20 +21,33 @@ export async function getById(req,res,next){
 }
 
 //creating product 
-export async function post(req, res, next) {
-  try {
-    let body = req.body;
-    let newproduct = new productModel(body);
-    newproduct.save((error, response) => {
-      if (error) return res.status(500).send(error);
-      res
-        .status(200)
-        .send({ success: true, message: "product Added Succesfully" });
-    });
-  } catch (e) {
-    return res.status(500).send(e);
-  }
+// export async function post(req, res, next) {
+//   try {
+//     let body = req.body;
+//     let newproduct = new productModel(body);
+//     newproduct.save((error, response) => {
+//       if (error) return res.status(500).send(error);
+//       res
+//         .status(200)
+//         .send({ success: true, message: "product Added Succesfully" });
+//     });
+//   } catch (e) {
+//     return res.status(500).send(e);
+//   }
+// }
+export function post(req, res, next) {
+  const product = new productModel(req.body);
+  product.save().then((response)=>{
+    res
+      .status(200)
+      .send({ status: 201, message: response })
+      .catch((err) => {
+        next(err);
+      });
+  });
 }
+
+
 
 //update the product
 export async function put(req,res,next){
